@@ -24,8 +24,6 @@ fun Application.configureDatabases() {
 
     Flyway.configure()
         .dataSource(dataSource)
-        .baselineOnMigrate(true)
-        .validateOnMigrate(true)
         .connectRetries(3)
         .locations("classpath:db/migration")
         .loggers("slf4j")
