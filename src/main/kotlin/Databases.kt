@@ -3,8 +3,11 @@ package ru.makiev
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import io.ktor.server.application.*
+import kotlinx.coroutines.Dispatchers
 import org.flywaydb.core.Flyway
 import org.jetbrains.exposed.sql.Database
+import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
+
 
 fun Application.configureDatabases() {
     val dbConfig = environment.config.config("ktor.database")
@@ -33,3 +36,5 @@ fun Application.configureDatabases() {
     Database.connect(dataSource)
 }
 
+suspend fun <T> dbQuery(block: suspend () -> T): T =
+    newSuspendedTransaction(Dispatchers.IO) { block() }

@@ -14,5 +14,5 @@ fun Application.module() {
     //configureHTTP()
     //configureMonitoring()
     //configureFrameworks()
-    //configureRouting()
+    configureRouting()
 }
