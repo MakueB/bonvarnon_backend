@@ -2,6 +2,6 @@ package ru.makiev.database.tables
 
 import org.jetbrains.exposed.dao.id.IntIdTable
 
-object Roles : IntIdTable("roles") {
+object OrderStatuses : IntIdTable("order_statuses") {
     val name = text("name").uniqueIndex()
 }
