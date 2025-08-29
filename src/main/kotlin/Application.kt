@@ -12,7 +12,7 @@ fun Application.module() {
     //configureSockets()
     //configureSecurity()
     //configureHTTP()
-    //configureMonitoring()
+    configureMonitoring()
     //configureFrameworks()
     configureRouting()
 }

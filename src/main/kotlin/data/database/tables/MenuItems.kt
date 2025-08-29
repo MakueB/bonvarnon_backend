@@ -1,6 +1,7 @@
-package ru.makiev.database.tables
+package ru.makiev.data.database.tables
 
 import org.jetbrains.exposed.dao.id.IntIdTable
+import org.jetbrains.exposed.sql.javatime.CurrentDateTime
 import org.jetbrains.exposed.sql.javatime.datetime
 
 object MenuItems : IntIdTable("menu_items") {
@@ -9,6 +10,6 @@ object MenuItems : IntIdTable("menu_items") {
     val description = text("description").nullable()
     val price = decimal("price",10, 2)
     val imageUrl = text("image_url").nullable()
-    val createdAt = datetime("created_at")
-    val updatedAt = datetime("updated_at")
+    val createdAt = datetime("created_at").defaultExpression(CurrentDateTime)
+    val updatedAt = datetime("updated_at").defaultExpression(CurrentDateTime)
 }

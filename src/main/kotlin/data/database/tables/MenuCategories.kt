@@ -1,4 +1,4 @@
-package ru.makiev.database.tables
+package ru.makiev.data.database.tables
 
 import org.jetbrains.exposed.dao.id.IntIdTable
 import org.jetbrains.exposed.sql.javatime.datetime
