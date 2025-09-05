@@ -6,7 +6,7 @@ import org.jetbrains.exposed.sql.javatime.datetime
 
 object MenuItems : IntIdTable("menu_items") {
     val categoryId = integer("category_id").references(MenuCategories.id)
-    val name = text("text")
+    val name = text("name")
     val description = text("description").nullable()
     val price = decimal("price",10, 2)
     val imageUrl = text("image_url").nullable()
