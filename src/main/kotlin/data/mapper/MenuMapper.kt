@@ -3,6 +3,7 @@ package ru.makiev.data.mapper
 import ru.makiev.data.model.MenuCategoryResponse
 import ru.makiev.data.model.MenuItemResponse
 import ru.makiev.domain.models.MenuCategory
+import ru.makiev.domain.models.MenuItem
 
 
 fun MenuCategory.toMenuCategoryResponse(): MenuCategoryResponse =
@@ -19,4 +20,13 @@ fun MenuCategory.toMenuCategoryResponse(): MenuCategoryResponse =
                 imageUrl = it.imageUrl
             )
         }
+    )
+
+fun MenuItem.toMenuItemResponse(): MenuItemResponse =
+    MenuItemResponse(
+        id = this.id,
+        name = this.name,
+        description = this.description,
+        price = this.price.toPlainString(),
+        imageUrl = this.imageUrl
     )

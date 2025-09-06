@@ -1,9 +1,14 @@
 package ru.makiev.domain.service
 
+import ru.makiev.data.model.CreateMenuCategoryRequest
+import ru.makiev.data.model.CreateMenuItemRequest
+import ru.makiev.data.model.UpdateMenuCategoryRequest
+import ru.makiev.data.model.UpdateMenuItemRequest
 import ru.makiev.domain.api.MenuCategoryRepository
 import ru.makiev.domain.api.MenuItemRepository
 import ru.makiev.domain.api.MenuService
 import ru.makiev.domain.models.MenuCategory
+import ru.makiev.domain.models.MenuItem
 
 class MenuServiceImpl(
     private val categoryRepository: MenuCategoryRepository,
@@ -16,4 +21,24 @@ class MenuServiceImpl(
             category.copy(items = items)
         }
     }
+
+    override suspend fun createCategory(request: CreateMenuCategoryRequest): MenuCategory {
+        return categoryRepository.create(request)
+    }
+
+    override suspend fun deleteCategory(id: Int): Boolean = categoryRepository.delete(id)
+
+    override suspend fun updateCategory(
+        id: Int,
+        request: UpdateMenuCategoryRequest
+    ): MenuCategory? = categoryRepository.update(id, request)
+
+    override suspend fun createItem(request: CreateMenuItemRequest): MenuItem = itemRepository.create(request)
+
+    override suspend fun deleteItem(id: Int): Boolean = itemRepository.delete(id)
+
+    override suspend fun updateItem(
+        id: Int,
+        request: UpdateMenuItemRequest
+    ): MenuItem? = itemRepository.update(id, request)
 }

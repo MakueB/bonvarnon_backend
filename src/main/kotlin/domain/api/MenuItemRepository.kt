@@ -1,13 +1,14 @@
 package ru.makiev.domain.api
 
+import ru.makiev.data.model.CreateMenuItemRequest
+import ru.makiev.data.model.UpdateMenuItemRequest
 import ru.makiev.domain.models.MenuItem
-import java.math.BigDecimal
 
 interface MenuItemRepository {
     suspend fun getAll(): List<MenuItem>
     suspend fun getById(id: Int): MenuItem?
-    suspend fun create(name: String, price: BigDecimal, imageUrl: String?): MenuItem
-    suspend fun update(id: Int, name: String?, price: BigDecimal?, imageUrl: String?): Boolean
+    suspend fun create(request: CreateMenuItemRequest): MenuItem
+    suspend fun update(id: Int, request: UpdateMenuItemRequest): MenuItem?
     suspend fun delete(id: Int): Boolean
     suspend fun getByCategoryId(categoryId: Int): List<MenuItem>
 }

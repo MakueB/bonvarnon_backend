@@ -1,7 +1,24 @@
 package ru.makiev.domain.api
 
+import ru.makiev.data.model.CreateMenuCategoryRequest
+import ru.makiev.data.model.CreateMenuItemRequest
+import ru.makiev.data.model.UpdateMenuCategoryRequest
+import ru.makiev.data.model.UpdateMenuItemRequest
 import ru.makiev.domain.models.MenuCategory
+import ru.makiev.domain.models.MenuItem
 
 interface MenuService {
     suspend fun getFullMenu(): List<MenuCategory>
+
+    suspend fun createCategory(request: CreateMenuCategoryRequest): MenuCategory
+
+    suspend fun deleteCategory(id: Int): Boolean
+
+    suspend fun updateCategory(id: Int, request: UpdateMenuCategoryRequest): MenuCategory?
+
+    suspend fun createItem(request: CreateMenuItemRequest): MenuItem
+
+    suspend fun deleteItem(id: Int): Boolean
+
+    suspend fun updateItem(id: Int, request: UpdateMenuItemRequest): MenuItem?
 }
