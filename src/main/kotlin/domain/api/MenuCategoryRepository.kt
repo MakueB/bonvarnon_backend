@@ -1,7 +1,7 @@
 package ru.makiev.domain.api
 
-import ru.makiev.data.model.CreateMenuCategoryRequest
-import ru.makiev.data.model.UpdateMenuCategoryRequest
+import ru.makiev.application.dto.CreateMenuCategoryRequest
+import ru.makiev.application.dto.UpdateMenuCategoryRequest
 import ru.makiev.domain.models.MenuCategory
 
 interface MenuCategoryRepository {

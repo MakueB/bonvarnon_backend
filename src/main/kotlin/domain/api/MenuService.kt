@@ -1,9 +1,9 @@
 package ru.makiev.domain.api
 
-import ru.makiev.data.model.CreateMenuCategoryRequest
-import ru.makiev.data.model.CreateMenuItemRequest
-import ru.makiev.data.model.UpdateMenuCategoryRequest
-import ru.makiev.data.model.UpdateMenuItemRequest
+import ru.makiev.application.dto.CreateMenuCategoryRequest
+import ru.makiev.application.dto.CreateMenuItemRequest
+import ru.makiev.application.dto.UpdateMenuCategoryRequest
+import ru.makiev.application.dto.UpdateMenuItemRequest
 import ru.makiev.domain.models.MenuCategory
 import ru.makiev.domain.models.MenuItem
 
