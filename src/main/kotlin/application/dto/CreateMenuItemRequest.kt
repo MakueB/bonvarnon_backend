@@ -1,6 +1,7 @@
 package ru.makiev.application.dto
 
 import kotlinx.serialization.Serializable
+import java.math.BigDecimal
 
 @Serializable
 data class CreateMenuItemRequest(
@@ -13,7 +14,7 @@ data class CreateMenuItemRequest(
     fun validate(): List<String> {
         val errors = mutableListOf<String>()
         if (name.isBlank()) errors.add("Name must not be blank")
-        if (price.toBigDecimal() == null) errors.add("Price must be a valid number")
+        if (price.toBigDecimal() <= BigDecimal.ZERO) errors.add("Price must be a valid number")
         return errors
     }
 }

@@ -102,7 +102,7 @@ class MenuItemRepositoryImpl : MenuItemRepository {
     }
 
     override suspend fun delete(id: Int): Boolean {
-        return MenuItems.deleteWhere { MenuItems.id eq id } > 0
+        return dbQuery { MenuItems.deleteWhere { MenuItems.id eq id } > 0 }
     }
 
     override suspend fun getByCategoryId(categoryId: Int): List<MenuItem> = dbQuery {

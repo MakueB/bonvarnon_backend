@@ -38,7 +38,7 @@ fun Application.configureMenuRoutes() {
 
             put("/categories/{id}") {
                 val id = call.parameters["id"]?.toIntOrNull()
-                    ?:return@put call.respond(HttpStatusCode.BadRequest, "Invalid category id")
+                    ?: return@put call.respond(HttpStatusCode.BadRequest, "Invalid category id")
 
                 val request = call.receive<UpdateMenuCategoryRequest>()
                 val updated = menuService.updateCategory(id, request)

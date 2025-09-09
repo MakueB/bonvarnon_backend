@@ -1,6 +1,7 @@
 package ru.makiev
 
 import io.ktor.server.application.*
+import ru.makiev.application.routes.configureAdditiveRoutes
 import ru.makiev.application.routes.configureMenuRoutes
 import ru.makiev.plugins.configureDatabases
 import ru.makiev.plugins.configureDi
@@ -17,6 +18,7 @@ fun Application.module() {
     configureDatabases()
     configureDi()
     configureStatusPages()
+    configureAdditiveRoutes()
     //configureSockets()
     //configureSecurity()
     //configureHTTP()
