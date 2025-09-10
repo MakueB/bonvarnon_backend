@@ -34,8 +34,9 @@ Backend-сервис для кофейни **Bonvarnon**, реализованн
 ```bash
 git clone https://github.com/MakueB/bonvarnon_backend.git
 cd bonvarnon_backend
-
+```
 ### 2. Настройка окружения
+```bash
 Создайте файл `.env` со следующими параметрами:
 
 
@@ -43,7 +44,8 @@ DB_URL=jdbc:postgresql://localhost:5432/bonvarnon
 DB_USER=your_user
 DB_PASSWORD=your_password
 PORT=8080
-
+```
 ### 3. Запуск
+```bash
 ./gradlew run
-
+```
