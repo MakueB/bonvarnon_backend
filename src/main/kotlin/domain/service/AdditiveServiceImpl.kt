@@ -1,7 +1,7 @@
 package ru.makiev.domain.service
 
-import ru.makiev.application.dto.CreateAdditiveRequest
-import ru.makiev.application.dto.UpdateAdditiveRequest
+import ru.makiev.application.dto.additive.CreateAdditiveRequest
+import ru.makiev.application.dto.additive.UpdateAdditiveRequest
 import ru.makiev.domain.api.AdditiveRepository
 import ru.makiev.domain.api.AdditiveService
 import ru.makiev.domain.model.Additive

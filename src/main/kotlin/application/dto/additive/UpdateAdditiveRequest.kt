@@ -1,7 +1,6 @@
-package ru.makiev.application.dto
+package ru.makiev.application.dto.additive
 
 import kotlinx.serialization.Serializable
-import nonapi.io.github.classgraph.json.Id
 
 @Serializable
 data class UpdateAdditiveRequest(

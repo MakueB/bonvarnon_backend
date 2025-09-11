@@ -1,4 +1,4 @@
-package ru.makiev.application.dto
+package ru.makiev.application.dto.additive
 
 import kotlinx.serialization.Serializable
 

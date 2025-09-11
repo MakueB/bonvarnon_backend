@@ -9,10 +9,10 @@ import org.koin.ktor.ext.inject
 import ru.makiev.application.exception.ValidationException
 import ru.makiev.application.mapper.toMenuCategoryResponse
 import ru.makiev.application.mapper.toMenuItemResponse
-import ru.makiev.application.dto.CreateMenuCategoryRequest
-import ru.makiev.application.dto.CreateMenuItemRequest
-import ru.makiev.application.dto.UpdateMenuCategoryRequest
-import ru.makiev.application.dto.UpdateMenuItemRequest
+import ru.makiev.application.dto.menu.CreateMenuCategoryRequest
+import ru.makiev.application.dto.menu.CreateMenuItemRequest
+import ru.makiev.application.dto.menu.UpdateMenuCategoryRequest
+import ru.makiev.application.dto.menu.UpdateMenuItemRequest
 import ru.makiev.domain.api.MenuService
 
 fun Application.configureMenuRoutes() {

@@ -1,7 +1,7 @@
 package ru.makiev.application.mapper
 
-import ru.makiev.application.dto.MenuCategoryResponse
-import ru.makiev.application.dto.MenuItemResponse
+import ru.makiev.application.dto.menu.MenuCategoryResponse
+import ru.makiev.application.dto.menu.MenuItemResponse
 import ru.makiev.domain.models.MenuCategory
 import ru.makiev.domain.models.MenuItem
 

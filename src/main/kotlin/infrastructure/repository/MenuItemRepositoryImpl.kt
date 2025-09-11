@@ -7,8 +7,8 @@ import org.jetbrains.exposed.sql.javatime.CurrentDateTime
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.update
 import ru.makiev.data.database.tables.MenuItems
-import ru.makiev.application.dto.CreateMenuItemRequest
-import ru.makiev.application.dto.UpdateMenuItemRequest
+import ru.makiev.application.dto.menu.CreateMenuItemRequest
+import ru.makiev.application.dto.menu.UpdateMenuItemRequest
 import ru.makiev.plugins.dbQuery
 import ru.makiev.domain.api.MenuItemRepository
 import ru.makiev.domain.models.MenuItem

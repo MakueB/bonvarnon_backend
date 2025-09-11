@@ -1,7 +1,7 @@
 package ru.makiev.domain.api
 
-import ru.makiev.application.dto.CreateMenuItemRequest
-import ru.makiev.application.dto.UpdateMenuItemRequest
+import ru.makiev.application.dto.menu.CreateMenuItemRequest
+import ru.makiev.application.dto.menu.UpdateMenuItemRequest
 import ru.makiev.domain.models.MenuItem
 
 interface MenuItemRepository {

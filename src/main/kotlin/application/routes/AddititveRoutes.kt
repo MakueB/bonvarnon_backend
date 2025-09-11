@@ -6,8 +6,8 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import org.koin.ktor.ext.inject
-import ru.makiev.application.dto.CreateAdditiveRequest
-import ru.makiev.application.dto.UpdateAdditiveRequest
+import ru.makiev.application.dto.additive.CreateAdditiveRequest
+import ru.makiev.application.dto.additive.UpdateAdditiveRequest
 import ru.makiev.application.exception.ValidationException
 import ru.makiev.application.mapper.toAdditiveResponse
 import ru.makiev.domain.api.AdditiveService

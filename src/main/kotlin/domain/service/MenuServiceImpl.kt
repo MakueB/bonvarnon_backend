@@ -1,9 +1,9 @@
 package ru.makiev.domain.service
 
-import ru.makiev.application.dto.CreateMenuCategoryRequest
-import ru.makiev.application.dto.CreateMenuItemRequest
-import ru.makiev.application.dto.UpdateMenuCategoryRequest
-import ru.makiev.application.dto.UpdateMenuItemRequest
+import ru.makiev.application.dto.menu.CreateMenuCategoryRequest
+import ru.makiev.application.dto.menu.CreateMenuItemRequest
+import ru.makiev.application.dto.menu.UpdateMenuCategoryRequest
+import ru.makiev.application.dto.menu.UpdateMenuItemRequest
 import ru.makiev.domain.api.MenuCategoryRepository
 import ru.makiev.domain.api.MenuItemRepository
 import ru.makiev.domain.api.MenuService

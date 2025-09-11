@@ -5,8 +5,8 @@ import org.jetbrains.exposed.sql.deleteWhere
 import org.jetbrains.exposed.sql.insertAndGetId
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.update
-import ru.makiev.application.dto.CreateAdditiveRequest
-import ru.makiev.application.dto.UpdateAdditiveRequest
+import ru.makiev.application.dto.additive.CreateAdditiveRequest
+import ru.makiev.application.dto.additive.UpdateAdditiveRequest
 import ru.makiev.data.database.tables.Additives
 import ru.makiev.data.database.tables.MenuItems
 import ru.makiev.domain.api.AdditiveRepository
