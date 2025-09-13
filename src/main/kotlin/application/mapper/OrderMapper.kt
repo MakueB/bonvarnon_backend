@@ -6,11 +6,12 @@ import ru.makiev.application.dto.order.OrderResponse
 import ru.makiev.domain.model.Order
 import ru.makiev.domain.model.OrderItem
 import ru.makiev.domain.model.OrderItemOption
+import ru.makiev.domain.model.User
 
-fun Order.toOrderResponse(userId: Int, status: String, sizes: Map<Int, String>): OrderResponse {
+fun Order.toOrderResponse(user: User, status: String, sizes: Map<Int, String>): OrderResponse {
     return OrderResponse(
         id = this.id,
-        userId = userId,
+        user = user.toResponse(),
         status = status,
         totalPrice = this.totalPrice.toPlainString(),
         paymentMethod = this.paymentMethod,

@@ -1,11 +1,12 @@
 package ru.makiev.application.dto.order
 
 import kotlinx.serialization.Serializable
+import ru.makiev.application.dto.user.UserResponse
 
 @Serializable
 data class OrderResponse(
     val id: Int,
-    val userId: Int,
+    val user: UserResponse,
     val status: String,
     val totalPrice: String,
     val paymentMethod: String,

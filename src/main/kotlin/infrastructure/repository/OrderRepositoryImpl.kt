@@ -30,7 +30,7 @@ class OrderRepositoryImpl: OrderRepostory {
                 row[Orders.totalPrice] = totalPrice
                 row[Orders.paymentMethod] = request.paymentMethod
                 row[Orders.bonusUsed] = request.bonusUsed ?: 0
-                row[Orders.bonusEarned] = bonusUsed
+                row[Orders.bonusEarned] = bonusEarned
                 row[Orders.createdAt] = CurrentDateTime
                 row[Orders.updatedAt] = CurrentDateTime
             }.value
@@ -56,13 +56,14 @@ class OrderRepositoryImpl: OrderRepostory {
         }
     }
 
-    override suspend fun updateStatus(orderId: Int, statusId: Int) {
-        dbQuery {
+    override suspend fun updateStatus(orderId: Int, statusId: Int): Boolean {
+        val updated = dbQuery {
             Orders.update({ Orders.id eq orderId }) { row ->
                 row[Orders.statusId] = statusId
                 row[Orders.updatedAt] = CurrentDateTime
             }
         }
+        return updated > 0
     }
 
     override suspend fun findById(orderId: Int): Order? {
@@ -72,6 +73,7 @@ class OrderRepositoryImpl: OrderRepostory {
                 .map { row ->
                     Order(
                         id = orderId,
+                        userId = row[Orders.userId],
                         statusId = row[Orders.statusId],
                         totalPrice = row[Orders.totalPrice],
                         paymentMethod = row[Orders.paymentMethod],
@@ -124,6 +126,7 @@ class OrderRepositoryImpl: OrderRepostory {
                 .map { row ->
                     Order(
                         id = row[Orders.id].value,
+                        userId = row[Orders.userId],
                         statusId = row[Orders.statusId],
                         totalPrice = row[Orders.totalPrice],
                         paymentMethod = row[Orders.paymentMethod],
