@@ -31,7 +31,7 @@ class UserRepositoryImpl : UserRepository {
         }
     }
 
-    override suspend fun findById(id: Int): User? {
+    override suspend fun getById(id: Int): User? {
         return dbQuery {
             Users.selectAll()
                 .where { Users.id eq id }
@@ -39,7 +39,7 @@ class UserRepositoryImpl : UserRepository {
         }.singleOrNull()
     }
 
-    override suspend fun findByEmail(email: String): User? {
+    override suspend fun getByEmail(email: String): User? {
         return dbQuery {
             Users.selectAll()
                 .where { Users.email eq email }
@@ -47,7 +47,7 @@ class UserRepositoryImpl : UserRepository {
         }.singleOrNull()
     }
 
-    override suspend fun findByPhone(phone: String): User? {
+    override suspend fun getByPhone(phone: String): User? {
         return dbQuery {
             Users.selectAll().where { Users.phone eq phone }.map { rowToUser(it) }
         }.singleOrNull()

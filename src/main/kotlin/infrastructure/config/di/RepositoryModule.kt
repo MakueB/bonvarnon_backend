@@ -6,7 +6,9 @@ import ru.makiev.data.repository.MenuItemRepositoryImpl
 import ru.makiev.domain.api.AdditiveRepository
 import ru.makiev.domain.api.MenuCategoryRepository
 import ru.makiev.domain.api.MenuItemRepository
+import ru.makiev.domain.api.UserRepository
 import ru.makiev.infrastructure.repository.AdditiveRepositoryImpl
+import ru.makiev.infrastructure.repository.UserRepositoryImpl
 
 val repositoryModule = module {
     single<MenuCategoryRepository> {
@@ -19,5 +21,9 @@ val repositoryModule = module {
 
     single<AdditiveRepository> {
         AdditiveRepositoryImpl()
+    }
+
+    single<UserRepository> {
+        UserRepositoryImpl()
     }
 }
