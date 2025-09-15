@@ -1,5 +1,6 @@
 package ru.makiev.infrastructure.repository
 
+import org.jetbrains.exposed.sql.ResultRow
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.insertAndGetId
 import org.jetbrains.exposed.sql.javatime.CurrentDateTime
@@ -17,6 +18,14 @@ import ru.makiev.plugins.dbQuery
 import java.math.BigDecimal
 
 class OrderRepositoryImpl: OrderRepostory {
+    override suspend fun getAll(): List<Order> {
+        return dbQuery {
+            Orders.selectAll().map { row ->
+                row.toOrder()
+            }
+        }
+    }
+
     override suspend fun create(
         userId: Int,
         request: CreateOrderRequest,
@@ -66,24 +75,11 @@ class OrderRepositoryImpl: OrderRepostory {
         return updated > 0
     }
 
-    override suspend fun findById(orderId: Int): Order? {
+    override suspend fun getById(orderId: Int): Order? {
         return dbQuery {
             Orders.selectAll()
                 .where { Orders.id eq orderId }
-                .map { row ->
-                    Order(
-                        id = orderId,
-                        userId = row[Orders.userId],
-                        statusId = row[Orders.statusId],
-                        totalPrice = row[Orders.totalPrice],
-                        paymentMethod = row[Orders.paymentMethod],
-                        bonusUsed = row[Orders.bonusUsed],
-                        bonusEarned = row[Orders.bonusEarned],
-                        createdAt = row[Orders.createdAt],
-                        updatedAt = row[Orders.updatedAt],
-                        items = getItems(orderId)
-                    )
-                }
+                .map { row -> row.toOrder() }
         }.singleOrNull()
     }
 
@@ -119,24 +115,27 @@ class OrderRepositoryImpl: OrderRepostory {
         }
     }
 
-    override suspend fun findByUserId(userId: Int): List<Order> {
+    override suspend fun getByUserId(userId: Int): List<Order> {
         return dbQuery {
             Orders.selectAll()
                 .where { Orders.userId eq userId }
                 .map { row ->
-                    Order(
-                        id = row[Orders.id].value,
-                        userId = row[Orders.userId],
-                        statusId = row[Orders.statusId],
-                        totalPrice = row[Orders.totalPrice],
-                        paymentMethod = row[Orders.paymentMethod],
-                        bonusEarned = row[Orders.bonusEarned],
-                        bonusUsed = row[Orders.bonusUsed],
-                        createdAt = row[Orders.createdAt],
-                        updatedAt = row[Orders.updatedAt],
-                        items = getItems(row[Orders.id].value)
-                    )
+                    row.toOrder()
                 }
         }
+    }
+    private suspend fun ResultRow.toOrder(): Order {
+        return  Order(
+            id = this[Orders.id].value,
+            userId = this[Orders.userId],
+            statusId = this[Orders.statusId],
+            totalPrice = this[Orders.totalPrice],
+            paymentMethod = this[Orders.paymentMethod],
+            bonusUsed = this[Orders.bonusUsed],
+            bonusEarned = this[Orders.bonusEarned],
+            createdAt = this[Orders.createdAt],
+            updatedAt = this[Orders.updatedAt],
+            items = getItems(this[Orders.id].value)
+        )
     }
 }
