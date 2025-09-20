@@ -7,22 +7,25 @@ import org.jetbrains.exposed.sql.javatime.CurrentDateTime
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.update
 import ru.makiev.application.dto.order.CreateOrderRequest
+import ru.makiev.data.database.tables.Additives
 import ru.makiev.data.database.tables.OrderItemOptions
 import ru.makiev.data.database.tables.OrderItems
+import ru.makiev.data.database.tables.OrderStatuses
 import ru.makiev.data.database.tables.Orders
+import ru.makiev.data.database.tables.Sizes
 import ru.makiev.domain.api.OrderRepostory
+import ru.makiev.domain.model.Additive
 import ru.makiev.domain.model.Order
 import ru.makiev.domain.model.OrderItem
 import ru.makiev.domain.model.OrderItemOption
+import ru.makiev.domain.model.Size
 import ru.makiev.plugins.dbQuery
 import java.math.BigDecimal
 
 class OrderRepositoryImpl: OrderRepostory {
     override suspend fun getAll(): List<Order> {
         return dbQuery {
-            Orders.selectAll().map { row ->
-                row.toOrder()
-            }
+            Orders.selectAll().map { row ->row.toOrder() }
         }
     }
 
@@ -33,7 +36,7 @@ class OrderRepositoryImpl: OrderRepostory {
         bonusEarned: Int
     ): Int {
         return dbQuery {
-            val odrerId = Orders.insertAndGetId { row ->
+            val orderId = Orders.insertAndGetId { row ->
                 row[Orders.userId] = userId
                 row[Orders.statusId] = 1
                 row[Orders.totalPrice] = totalPrice
@@ -61,7 +64,7 @@ class OrderRepositoryImpl: OrderRepostory {
                 }
             }
 
-            odrerId
+            orderId
         }
     }
 
@@ -101,14 +104,33 @@ class OrderRepositoryImpl: OrderRepostory {
 
     private suspend fun getOptions(itemId: Int): List<OrderItemOption> {
         return dbQuery {
-            OrderItemOptions.selectAll()
+            (OrderItemOptions leftJoin Sizes leftJoin Additives)
+                .selectAll()
                 .where { OrderItemOptions.orderItemId eq itemId }
                 .map { row ->
+                    val size = row[OrderItemOptions.sizeId].let {
+                        Size(
+                            id = row[Sizes.id].value,
+                            name = row[Sizes.name],
+                            extraPrice = row[Sizes.extraPrice],
+                            createdAt = row[Sizes.createdAt],
+                            updatedAt = row[Sizes.updatedAt]
+                        )
+                    }
+
+                    val additive = row[OrderItemOptions.additiveId].let {
+                        Additive(
+                            id = row[Additives.id].value,
+                            name = row[Additives.name],
+                            extraPrice = row[Additives.extraPrice]
+                        )
+                    }
+
                     OrderItemOption(
                         id = row[OrderItemOptions.id].value,
                         orderItemId = itemId,
-                        sizeId = row[OrderItemOptions.sizeId]?.value,
-                        additiveId = row[OrderItemOptions.additiveId]?.value ,
+                        size = size,
+                        additive = additive,
                         quantity = row[OrderItemOptions.quantity]
                     )
                 }
@@ -124,6 +146,16 @@ class OrderRepositoryImpl: OrderRepostory {
                 }
         }
     }
+
+    override suspend fun getStatusName(statusId: Int): String? {
+        return dbQuery {
+            OrderStatuses.select(OrderStatuses.name)
+                .where { OrderStatuses.id eq statusId }
+                .map { it[OrderStatuses.name] }
+                .singleOrNull()
+        }
+    }
+
     private suspend fun ResultRow.toOrder(): Order {
         return  Order(
             id = this[Orders.id].value,

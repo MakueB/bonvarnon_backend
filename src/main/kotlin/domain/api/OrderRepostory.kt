@@ -10,4 +10,5 @@ interface OrderRepostory {
     suspend fun updateStatus(orderId: Int, statusId: Int): Boolean
     suspend fun getById(orderId: Int): Order?
     suspend fun getByUserId(userId: Int): List<Order>
+    suspend fun getStatusName(statusId: Int): String?
 }
