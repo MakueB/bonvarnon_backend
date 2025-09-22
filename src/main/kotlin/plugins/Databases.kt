@@ -25,13 +25,15 @@ fun Application.configureDatabases() {
 
     val dataSource = HikariDataSource(hikariConfig)
 
-    Flyway.configure()
+    val flyway = Flyway.configure()
         .dataSource(dataSource)
         .connectRetries(3)
         .locations("classpath:db/migration")
         .loggers("slf4j")
         .load()
-        .migrate()
+
+    //flyway.repair()
+    flyway.migrate()
 
     Database.connect(dataSource)
 }
