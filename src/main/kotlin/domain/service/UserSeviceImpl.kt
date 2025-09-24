@@ -17,7 +17,6 @@ class UserSeviceImpl(
 ): UserService {
     override suspend fun getAll(): List<UserResponse> = userRepository.getAll().map { it.toResponse() }
 
-
     override suspend fun getById(id: Int): UserResponse? {
         return userRepository.getById(id)?.toResponse()
     }

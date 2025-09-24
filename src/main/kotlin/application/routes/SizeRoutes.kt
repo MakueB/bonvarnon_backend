@@ -11,7 +11,7 @@ import ru.makiev.application.dto.size.UpdateSizeRequest
 import ru.makiev.application.exception.ValidationException
 import ru.makiev.domain.api.service.SizeService
 
-fun Application.configureSizes(){
+fun Application.configureSizeRoutes(){
     val sizeService: SizeService by inject()
 
     routing {
