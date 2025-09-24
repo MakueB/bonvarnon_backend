@@ -4,7 +4,7 @@ import de.mkammerer.argon2.Argon2
 import de.mkammerer.argon2.Argon2Factory
 import io.ktor.server.config.ApplicationConfig
 import org.koin.dsl.module
-import ru.makiev.domain.api.PasswordService
+import ru.makiev.domain.api.service.PasswordService
 import ru.makiev.domain.service.Argon2PasswordService
 
 fun passwordModule(config: ApplicationConfig) = module {

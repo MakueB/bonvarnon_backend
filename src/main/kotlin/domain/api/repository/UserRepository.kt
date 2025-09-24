@@ -1,4 +1,4 @@
-package ru.makiev.domain.api
+package ru.makiev.domain.api.repository
 
 import ru.makiev.domain.model.User
 

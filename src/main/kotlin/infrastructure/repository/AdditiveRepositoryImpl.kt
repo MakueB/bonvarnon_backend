@@ -9,7 +9,7 @@ import ru.makiev.application.dto.additive.CreateAdditiveRequest
 import ru.makiev.application.dto.additive.UpdateAdditiveRequest
 import ru.makiev.data.database.tables.Additives
 import ru.makiev.data.database.tables.MenuItems
-import ru.makiev.domain.api.AdditiveRepository
+import ru.makiev.domain.api.repository.AdditiveRepository
 import ru.makiev.domain.model.Additive
 import ru.makiev.plugins.dbQuery
 

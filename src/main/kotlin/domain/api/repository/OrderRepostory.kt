@@ -1,4 +1,4 @@
-package ru.makiev.domain.api
+package ru.makiev.domain.api.repository
 
 import ru.makiev.application.dto.order.CreateOrderRequest
 import ru.makiev.domain.model.Order

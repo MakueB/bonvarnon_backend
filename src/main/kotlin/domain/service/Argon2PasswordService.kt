@@ -1,7 +1,7 @@
 package ru.makiev.domain.service
 
 import de.mkammerer.argon2.Argon2
-import ru.makiev.domain.api.PasswordService
+import ru.makiev.domain.api.service.PasswordService
 
 class Argon2PasswordService(
     private val argon2: Argon2,

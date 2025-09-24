@@ -1,10 +1,10 @@
-package ru.makiev.domain.api
+package ru.makiev.domain.api.service
 
 import ru.makiev.application.dto.additive.CreateAdditiveRequest
 import ru.makiev.application.dto.additive.UpdateAdditiveRequest
 import ru.makiev.domain.model.Additive
 
-interface AdditiveRepository {
+interface AdditiveService {
     suspend fun getAll(): List<Additive>
     suspend fun getById(id: Int): Additive?
     suspend fun create(request: CreateAdditiveRequest): Additive

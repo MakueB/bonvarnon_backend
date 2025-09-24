@@ -10,7 +10,7 @@ import ru.makiev.application.dto.additive.CreateAdditiveRequest
 import ru.makiev.application.dto.additive.UpdateAdditiveRequest
 import ru.makiev.application.exception.ValidationException
 import ru.makiev.application.mapper.toAdditiveResponse
-import ru.makiev.domain.api.AdditiveService
+import ru.makiev.domain.api.service.AdditiveService
 import java.math.BigDecimal
 
 fun Application.configureAdditiveRoutes() {
@@ -23,7 +23,7 @@ fun Application.configureAdditiveRoutes() {
                 call.respond(additives.map { it.toAdditiveResponse() })
             }
 
-            get ("/{id}") {
+            get ("{id}") {
                 val id = call.parameters["id"]?.toIntOrNull()
                     ?: return@get call.respond(HttpStatusCode.BadRequest, "Invalid ID")
 
@@ -42,13 +42,13 @@ fun Application.configureAdditiveRoutes() {
                 call.respond(HttpStatusCode.Created, created.toAdditiveResponse())
             }
 
-            patch("/{id}") {
+            patch("{id}") {
                 val id = call.parameters["id"]?.toIntOrNull()
                     ?: return@patch call.respond(HttpStatusCode.BadRequest, "Invalid ID")
 
                 val request = call.receive<UpdateAdditiveRequest>()
                 request.extraPrice?.let {
-                    if (it.toBigDecimal() <= BigDecimal.ZERO) return@patch call.respond("Price must be a valid number")
+                    if (it.toBigDecimal() < BigDecimal.ZERO) return@patch call.respond("Price must be a valid number")
                 }
                 val updated = additiveService.update(id, request)
 

@@ -4,9 +4,9 @@ import ru.makiev.application.dto.user.CreateUserRequest
 import ru.makiev.application.dto.user.UpdateUserRequest
 import ru.makiev.application.dto.user.UserResponse
 import ru.makiev.application.mapper.toResponse
-import ru.makiev.domain.api.PasswordService
-import ru.makiev.domain.api.UserRepository
-import ru.makiev.domain.api.UserService
+import ru.makiev.domain.api.service.PasswordService
+import ru.makiev.domain.api.repository.UserRepository
+import ru.makiev.domain.api.service.UserService
 import ru.makiev.domain.model.User
 import ru.makiev.domain.model.UserRole
 import java.time.LocalDateTime

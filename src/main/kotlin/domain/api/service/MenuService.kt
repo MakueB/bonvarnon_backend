@@ -1,4 +1,4 @@
-package ru.makiev.domain.api
+package ru.makiev.domain.api.service
 
 import ru.makiev.application.dto.menu.CreateMenuCategoryRequest
 import ru.makiev.application.dto.menu.CreateMenuItemRequest

@@ -1,12 +1,12 @@
 package ru.makiev.domain.model
 
 import java.math.BigDecimal
-import java.time.LocalDateTime
+import java.time.Instant
 
 data class Size(
     val id: Int,
     val name: String,
     val extraPrice: BigDecimal,
-    val createdAt: LocalDateTime,
-    val updatedAt: LocalDateTime
+    val createdAt: Instant,
+    val updatedAt: Instant
 )

@@ -4,9 +4,9 @@ import ru.makiev.application.dto.menu.CreateMenuCategoryRequest
 import ru.makiev.application.dto.menu.CreateMenuItemRequest
 import ru.makiev.application.dto.menu.UpdateMenuCategoryRequest
 import ru.makiev.application.dto.menu.UpdateMenuItemRequest
-import ru.makiev.domain.api.MenuCategoryRepository
-import ru.makiev.domain.api.MenuItemRepository
-import ru.makiev.domain.api.MenuService
+import ru.makiev.domain.api.repository.MenuCategoryRepository
+import ru.makiev.domain.api.repository.MenuItemRepository
+import ru.makiev.domain.api.service.MenuService
 import ru.makiev.domain.models.MenuCategory
 import ru.makiev.domain.models.MenuItem
 

@@ -1,10 +1,10 @@
 package ru.makiev.infrastructure.config.di
 
 import org.koin.dsl.module
-import ru.makiev.domain.api.AdditiveService
-import ru.makiev.domain.api.MenuService
-import ru.makiev.domain.api.OrderService
-import ru.makiev.domain.api.UserService
+import ru.makiev.domain.api.service.AdditiveService
+import ru.makiev.domain.api.service.MenuService
+import ru.makiev.domain.api.service.OrderService
+import ru.makiev.domain.api.service.UserService
 import ru.makiev.domain.service.AdditiveServiceImpl
 import ru.makiev.domain.service.MenuServiceImpl
 import ru.makiev.domain.service.OrderServiceImpl

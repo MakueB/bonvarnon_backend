@@ -7,7 +7,7 @@ import org.jetbrains.exposed.sql.insertAndGetId
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.update
 import ru.makiev.data.database.tables.Users
-import ru.makiev.domain.api.UserRepository
+import ru.makiev.domain.api.repository.UserRepository
 import ru.makiev.domain.model.User
 import ru.makiev.domain.model.UserRole
 import ru.makiev.plugins.dbQuery

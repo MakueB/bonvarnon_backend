@@ -10,7 +10,7 @@ import ru.makiev.data.database.tables.MenuItems
 import ru.makiev.application.dto.menu.CreateMenuItemRequest
 import ru.makiev.application.dto.menu.UpdateMenuItemRequest
 import ru.makiev.plugins.dbQuery
-import ru.makiev.domain.api.MenuItemRepository
+import ru.makiev.domain.api.repository.MenuItemRepository
 import ru.makiev.domain.models.MenuItem
 
 class MenuItemRepositoryImpl : MenuItemRepository {

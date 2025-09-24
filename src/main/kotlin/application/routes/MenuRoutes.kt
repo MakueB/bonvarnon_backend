@@ -13,7 +13,7 @@ import ru.makiev.application.dto.menu.CreateMenuCategoryRequest
 import ru.makiev.application.dto.menu.CreateMenuItemRequest
 import ru.makiev.application.dto.menu.UpdateMenuCategoryRequest
 import ru.makiev.application.dto.menu.UpdateMenuItemRequest
-import ru.makiev.domain.api.MenuService
+import ru.makiev.domain.api.service.MenuService
 
 fun Application.configureMenuRoutes() {
     val menuService: MenuService by inject()

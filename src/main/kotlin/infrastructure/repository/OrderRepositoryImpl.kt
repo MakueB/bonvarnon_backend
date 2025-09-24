@@ -13,7 +13,7 @@ import ru.makiev.data.database.tables.OrderItems
 import ru.makiev.data.database.tables.OrderStatuses
 import ru.makiev.data.database.tables.Orders
 import ru.makiev.data.database.tables.Sizes
-import ru.makiev.domain.api.OrderRepostory
+import ru.makiev.domain.api.repository.OrderRepostory
 import ru.makiev.domain.model.Additive
 import ru.makiev.domain.model.Order
 import ru.makiev.domain.model.OrderItem

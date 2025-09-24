@@ -7,7 +7,7 @@ import org.jetbrains.exposed.sql.insertAndGetId
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.update
 import ru.makiev.data.database.tables.Sizes
-import ru.makiev.domain.api.SizeRepository
+import ru.makiev.domain.api.repository.SizeRepository
 import ru.makiev.domain.model.Size
 import ru.makiev.plugins.dbQuery
 
@@ -49,7 +49,7 @@ class SizeRepositoryImpl : SizeRepository {
         }
     }
 
-    override suspend fun deleete(id: Int): Boolean {
+    override suspend fun delete(id: Int): Boolean {
         return Sizes.deleteWhere { Sizes.id eq id } > 0
     }
 

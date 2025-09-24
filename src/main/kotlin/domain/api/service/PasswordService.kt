@@ -1,4 +1,4 @@
-package ru.makiev.domain.api
+package ru.makiev.domain.api.service
 
 interface PasswordService {
     fun hash(password: String): String
